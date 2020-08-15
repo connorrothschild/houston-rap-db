@@ -5,7 +5,7 @@ $(function() {
 	$('#chart1').highcharts({
 		chart       : {
 			type        : 'pie',
-			borderColor : '#a1a1a1',
+			borderColor : 'black',
 			borderWidth : 1.5
 		},
 		title       : {
@@ -69,7 +69,7 @@ $(function() {
 	$('#chart2').highcharts({
 		chart       : {
 			type        : 'pie',
-			borderColor : '#a1a1a1',
+			borderColor : 'black',
 			borderWidth : 1.5
 		},
 		title       : {
@@ -134,73 +134,9 @@ $(function() {
 		]
 	});
 
-	// $('#map').highcharts({
-	// 	chart       : {
-	// 		type        : 'pie',
-	// 		borderColor : '#a1a1a1',
-	// 		borderWidth : 1.5
-	// 	},
-	// 	title       : {
-	// 		text  : 'First Nations and Inuit Health (2014/15) ',
-	// 		style : {
-	// 			fontSize : '15'
-	// 		}
-	// 	},
-	// 	credits     : {
-	// 		enabled : false
-	// 	},
-	// 	legend      : {
-	// 		enabled : false
-	// 	},
-	// 	tooltip     : {
-	// 		pointFormat : ' <b>{point.y} $ millions</b>'
-	// 	},
-	// 	plotOptions : {
-	// 		pie : {
-	// 			showInLegend : true,
-	// 			dataLabels   : {
-	// 				enabled   : false,
-	// 				distance  : -14,
-	// 				color     : 'white',
-	// 				style     : {
-	// 					fontweight : 'bold',
-	// 					fontsize   : 50
-	// 				},
-	// 				formatter : function() {
-	// 					return Highcharts.numberFormat(this.percentage) + '%';
-	// 				}
-	// 			}
-	// 		}
-	// 	},
-	// 	series      : [
-	// 		{
-	// 			name      : '',
-	// 			innerSize : '60%',
-	// 			data      : [
-	// 				{
-	// 					name : 'Supplementary Health Benefits',
-	// 					y    : 1127.9
-	// 				},
-	// 				{
-	// 					name : 'Primary Health Care',
-	// 					y    : 832.2
-	// 				},
-	// 				{
-	// 					name : 'BC Tripartite Initiative',
-	// 					y    : 398.6
-	// 				},
-	// 				{
-	// 					name : 'Health Infrastructure Support',
-	// 					y    : 203.9
-	// 				}
-	// 			]
-	// 		}
-	// 	]
-	// });
-
 	$('#longchart').highcharts({
 		chart       : {
-			borderColor : '#a1a1a1',
+			borderColor : 'black',
 			borderWidth : 1.5,
 			type        : 'areaspline',
 			marginRight : 25
