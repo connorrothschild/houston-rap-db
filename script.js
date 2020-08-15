@@ -1,6 +1,20 @@
+Papa.parse('./data/sample.csv', {
+	header        : true,
+	download      : true,
+	dynamicTyping : true,
+	complete      : function(results) {
+		data = results.data;
+		var tractArray = [ ...new Set(data.map((item) => item.tract)) ];
+		for (var i = 0; i < tractArray.length; i++) {
+			$('#tractDropdownList').append("<option value='" + tractArray[i] + "'></option>");
+		}
+	}
+});
+
 Highcharts.setOptions({
 	colors : [ '#ccedfd', '#e5fcb3', '#fccab3', '#cab3fc', '#fcefb3' ]
 });
+
 $(function() {
 	$('#chart1').highcharts({
 		chart       : {

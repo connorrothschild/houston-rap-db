@@ -1,51 +1,58 @@
-<link rel="stylesheet" href="style.scss"> 
+<link rel="stylesheet" href="style.scss">
 
 <body>
 
-  <h1 id="title">Nevada Rental Assistance Dashboard</h1>
-  <!-- <div id="source">Source: <a href="http://www.healthycanadians.gc.ca/publications/health-system-systeme-sante/report-healthcare-innovation-rapport-soins/index-eng.php">Healthy Canadians</a> </div> -->
+  <h1 id="title">Nevada Rental Assistance Dashboard</h1> 
+  <form>
+    <input type="text" name="tract" id="tractInput" list="tractDropdownList" placeholder='Select Tract'>
+    <datalist id="tractDropdownList"></datalist>
+    <input type="submit" value='Submit'>
+  </form>
 
   <div class='grid'>
 
-  <div class='cards-grid'>
-    <div class='card' id="card1">
-      <p class='number'>$123,456</p>
-    <div class='card-text'>
-      <span class='card-text-type'>Equitable distribution</span>
-      <span class='card-text-subtext'>Census Tract 12345</span>
-    </div>
-  </div>
-    <div class='card' id="card2">
-      <p class='number'>$100,000</p>
-      <div class='card-text'>
-        <span class='card-text-type'>Actual amount distributed</span>
-        <span class='card-text-subtext'>Census Tract 12345</span>
+    <div class='cards-grid'>
+      <div class='card' id="card1">
+        <p class='number'>$123,456</p>
+        <div class='card-text'>
+          <span class='card-text-type'>Equitable distribution</span>
+          <span class='card-text-subtext'>Census Tract 12345</span>
+        </div>
+      </div>
+      <div class='card' id="card2">
+        <p class='number'>$100,000</p>
+        <div class='card-text'>
+          <span class='card-text-type'>Actual amount distributed</span>
+          <span class='card-text-subtext'>Census Tract 12345</span>
+        </div>
+      </div>
+      <div class='card' id="card3">
+        <p class='number'>-$23,456</p>
+        <div class='card-text'>
+          <span class='card-text-type'>Difference (equity gap)</span>
+          <span class='card-text-subtext'>Census Tract 12345</span>
+        </div>
       </div>
     </div>
-    <div class='card' id="card3">
-      <p class='number'>-$23,456</p>
-      <div class='card-text'>
-        <span class='card-text-type'>Difference (equity gap)</span>
-        <span class='card-text-subtext'>Census Tract 12345</span>
-      </div>
+
+    <div class='three-charts-grid'>
+      <div id="chart1"></div>
+      <div id="chart2"></div>
+      <!-- <div id="container3"></div> -->
+      <iframe id='map'
+        src='https://api.mapbox.com/styles/v1/connorrothschild/ck5sz6sf42uue1jnubeg4jfem.html?fresh=true&title=false&access_token=pk.eyJ1IjoiY29ubm9ycm90aHNjaGlsZCIsImEiOiJjazVpZTN5ZXAwZG1mM2ptbnowa3I4ZW4yIn0.vLvH5zQVcMV3ArgDoqNPYA'
+        width='100%' height='400px'>
+      </iframe>
+
     </div>
-  </div>
-
-  <div class='three-charts-grid'>
-    <div id="chart1"></div>
-    <div id="chart2"></div>
-    <!-- <div id="container3"></div> -->
-  <iframe id='map' src='https://api.mapbox.com/styles/v1/connorrothschild/ck5sz6sf42uue1jnubeg4jfem.html?fresh=true&title=false&access_token=pk.eyJ1IjoiY29ubm9ycm90aHNjaGlsZCIsImEiOiJjazVpZTN5ZXAwZG1mM2ptbnowa3I4ZW4yIn0.vLvH5zQVcMV3ArgDoqNPYA'
-      width='100%' height='400px'>
-  </iframe>
-
-  </div>
     <div id="longchart"></div>
   </div>
 </body>
 
-<script src="https://highcharts.github.io/pattern-fill/pattern-fill-v2.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script src="http://code.highcharts.com/highcharts.js"></script>
-<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="https://highcharts.github.io/pattern-fill/pattern-fill-v2.js"></script>
+<script src="scripts/papaparse.js"></script>
+<script src="scripts/autocomplete.js"></script>
+<script src="scripts/jquery-csv.js"></script>
 <script src="script.js"></script>
