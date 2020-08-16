@@ -1,11 +1,30 @@
-body {
-    background-color: whitesmoke;
+* {
+    box-sizing: border-box;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 #title {
+    font-size: 30px;
     text-align: center;
-    color: #333333;
+    color: black;
+    margin: 15px;
+}
+
+#subtitle {
+    font-size: 24px;
+    text-align: center;
+    font-weight: 100;
+    padding-right: 10px;
+}
+
+#tractSelectorSection {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
 }
 
 .grid {
@@ -27,7 +46,7 @@ body {
 }
 
 .card {
-    padding: 12px;
+    padding: 30px 0 30px 0;
     border: 2px solid black;
     border-radius: 20px;
     -webkit-border-radius: 20px;

@@ -2,31 +2,33 @@
 
 <body>
 
-  <h1 id="title">Nevada Rental Assistance Dashboard</h1> 
-  <form>
-    <input type="text" name="tract" id="tractInput" list="tractDropdownList" placeholder='Select Tract'>
+  <p id="title">City of Houston Rental Assistance Dashboard</p> 
+  <div id='tractSelectorSection'><p id="subtitle"></p> 
+  <form style='display:inline'>
+    <input type="text" name="tract" id="tractInput" list="tractDropdownList" placeholder='Select a Different Tract'>
     <datalist id="tractDropdownList"></datalist>
     <input type="submit" value='Submit'>
   </form>
+  </div>
 
   <div class='grid'>
 
     <div class='cards-grid'>
-      <div class='card' id="card1">
-        <p class='number'>$123,456</p>
+      <div class='card' id="equitable-card">
+        <p class='number'></p>
         <div class='card-text'>
           <span class='card-text-type'>Equitable distribution</span>
           <span class='card-text-subtext'>Census Tract 12345</span>
         </div>
       </div>
-      <div class='card' id="card2">
+      <div class='card' id="actual-card">
         <p class='number'>$100,000</p>
         <div class='card-text'>
           <span class='card-text-type'>Actual amount distributed</span>
           <span class='card-text-subtext'>Census Tract 12345</span>
         </div>
       </div>
-      <div class='card' id="card3">
+      <div class='card' id="difference-card">
         <p class='number'>-$23,456</p>
         <div class='card-text'>
           <span class='card-text-type'>Difference (equity gap)</span>
@@ -54,5 +56,6 @@
 <script src="https://highcharts.github.io/pattern-fill/pattern-fill-v2.js"></script>
 <script src="scripts/papaparse.js"></script>
 <script src="scripts/autocomplete.js"></script>
-<script src="scripts/jquery-csv.js"></script>
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="scripts/helpers.js"></script>
 <script src="script.js"></script>
