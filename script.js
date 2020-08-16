@@ -28,9 +28,8 @@ Papa.parse('./data/sample.csv', {
 
 			$('#chart1').highcharts({
 				chart       : {
-					type        : 'pie',
-					borderColor : 'black',
-					borderWidth : 1.5
+					type            : 'pie',
+					backgroundColor : 'white'
 				},
 				title       : {
 					text  : 'Arbitrary Pie Chart',
@@ -92,10 +91,9 @@ Papa.parse('./data/sample.csv', {
 
 			$('#chart2').highcharts({
 				chart       : {
-					type        : 'scatter',
-					zoomType    : 'xy',
-					borderColor : 'black',
-					borderWidth : 1.5
+					type            : 'scatter',
+					zoomType        : 'xy',
+					backgroundColor : 'white'
 				},
 				title       : {
 					text : 'Actual vs Equitable Pledge Amounts'
@@ -103,10 +101,38 @@ Papa.parse('./data/sample.csv', {
 				subtitle    : {
 					text : 'Tract level'
 				},
+				credits     : {
+					enabled : false
+				},
+				tooltip     : {
+					formatter : function() {
+						return (
+							'<span style="font-size:16px">Census Tract ' +
+							this.point.tract +
+							'</span><table><tr><td style="text-align:left;font-size:12px">' +
+							'</b>Actual pledged amount:' +
+							'<br>Equitable pledged amount: </td>' +
+							'<td style="text-align:right;font-size:12px">' +
+							dollarFormat(this.x) +
+							'<br>' +
+							dollarFormat(this.y) +
+							'</td></tr></table>'
+						);
+					},
+					useHTML   : true,
+					shared    : true
+				},
+
+				// tooltip : {
+				// 	// useHTML   : true,
+				// 	formatter: function() {
+				// 		return '<b>Census Tract ' + this.tract + '</b><br>Actual pledged amount: ' + this.x + '<br>Equitable pledged amount: ' + this.y + '</b>';
+				// 	}
+				// },
 				xAxis       : {
 					title         : {
 						enabled : true,
-						text    : 'Height (cm)'
+						text    : 'Actual pledged amount ($)'
 					},
 					startOnTick   : true,
 					endOnTick     : true,
@@ -114,37 +140,17 @@ Papa.parse('./data/sample.csv', {
 				},
 				yAxis       : {
 					title : {
-						text : 'Weight (kg)'
+						text : 'Equitable pledge amount ($)'
 					}
 				},
 				legend      : {
-					enabled         : false,
-					layout          : 'vertical',
-					align           : 'left',
-					verticalAlign   : 'top',
-					x               : 100,
-					y               : 70,
-					floating        : true,
-					backgroundColor : Highcharts.defaultOptions.chart.backgroundColor,
-					borderWidth     : 1
+					enabled : true
 				},
 				plotOptions : {
 					scatter : {
-						showInLegend : true,
-						dataLabels   : {
-							enabled   : false,
-							distance  : -14,
-							color     : 'black',
-							style     : {
-								fontweight : 'bold',
-								fontsize   : 50
-							},
-							formatter : function() {
-								return Highcharts.numberFormat(this.percentage) + '%';
-							}
-						},
-						marker       : {
+						marker : {
 							radius : 5,
+							symbol : 'circle',
 							states : {
 								hover : {
 									enabled   : true,
@@ -152,26 +158,34 @@ Papa.parse('./data/sample.csv', {
 								}
 							}
 						},
-						states       : {
+						states : {
 							hover : {
 								marker : {
 									enabled : false
 								}
 							}
-						},
-						tooltip      : {
-							headerFormat : null,
-							pointFormat  :
-								'<b>Census Tract {point.name}</b><br>Actual pledged amount: {point.x}<br>Equitable pledged amount: {point.y}'
 						}
 					}
 				},
 				series      : [
 					{
-						// name  : data.map((d) => d.tract),
+						name  : 'Other tracts',
 						color : 'rgba(223, 83, 83, .5)',
-						keys  : [ 'name', 'x', 'y' ],
-						data  : data.map((d) => [ d.tract, d.actual, d.equitable ])
+						keys  : [ 'tract', 'x', 'y' ],
+						data  : data
+							.filter((d) => d.tract != tractLevelData.tract)
+							.map((d) => [ d.tract, d.actual, d.equitable ])
+					},
+					{
+						name   : 'Tract ' + tractLevelData.tract,
+						color  : 'black',
+						marker : {
+							radius : 10
+						},
+						keys   : [ 'tract', 'x', 'y' ],
+						data   : data
+							.filter((d) => d.tract == tractLevelData.tract)
+							.map((d) => [ d.tract, d.actual, d.equitable ])
 					}
 				]
 			});
