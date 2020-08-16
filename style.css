@@ -6,6 +6,7 @@
 
 body {
     background-color: #F9FAFB;
+    padding: 10px;
 }
 
 #title {
@@ -90,25 +91,17 @@ body {
     white-space: normal !important;
 }
 
-/* 
-#container4 {
-    grid-row: 2;
-    grid-column: 1 / 4;
-} */
-
-/* @media screen and (max-width: 600px) {
-
-    #container1,
-    #container2,
-    #container3,
-    #container4 {
-        width: 100%;
-        margin: 0.7%;
-        display: inline;
+@media only screen and (max-width: 900px) {
+    .card {
+        flex-direction: column;
     }
-} */
+}
 
-@media screen and (max-width: 800px) {
+@media only screen and (max-width: 600px) {
+    .card {
+        flex-direction: row;
+    }
+
     .three-charts-grid {
         display: grid;
         grid-template-columns: 1fr;

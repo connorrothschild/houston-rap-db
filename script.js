@@ -122,13 +122,6 @@ Papa.parse('./data/sample.csv', {
 					useHTML   : true,
 					shared    : true
 				},
-
-				// tooltip : {
-				// 	// useHTML   : true,
-				// 	formatter: function() {
-				// 		return '<b>Census Tract ' + this.tract + '</b><br>Actual pledged amount: ' + this.x + '<br>Equitable pledged amount: ' + this.y + '</b>';
-				// 	}
-				// },
 				xAxis       : {
 					title         : {
 						enabled : true,
