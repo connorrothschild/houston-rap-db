@@ -32,10 +32,7 @@ Papa.parse('./data/sample.csv', {
 					backgroundColor : 'white'
 				},
 				title       : {
-					text  : 'Arbitrary Pie Chart',
-					style : {
-						fontSize : '15'
-					}
+					text : 'Sample chart'
 				},
 				credits     : {
 					enabled : false
@@ -182,6 +179,31 @@ Papa.parse('./data/sample.csv', {
 					}
 				]
 			});
+		});
+
+		$('#example-table').DataTable({
+			responsive : true,
+			scrollX    : true,
+			data       : data,
+			createdRow : function(row, data, dataIndex) {
+				if (data['tract'] == tractLevelData.tract) {
+					$(row).addClass('highlighted-row');
+				}
+			},
+			columnDefs : [
+				{
+					targets   : [ '_all' ],
+					className : 'mdc-data-table__cell'
+				}
+			],
+			columns    : [
+				{ data: 'tract', title: 'Census Tract' },
+				{ data: 'actual', title: 'Actual' },
+				{ data: 'equitable', title: 'Equitable' },
+				{ data: 'difference', title: 'Difference' },
+				{ data: 'svi_score', title: 'SVI' },
+				{ data: 'svi_perc', title: 'SVI Percentile' }
+			]
 		});
 	}
 });
